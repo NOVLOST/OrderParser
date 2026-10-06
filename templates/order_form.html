@@ -1,1 +1,94 @@
 
+{% extends "base.html" %}
+
+{% block title %}OrderParser — добавить заказ{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Добавить заказ</h1>
+    <p class="lead">
+        Внесите заказ вручную, если он ещё не подтянулся с площадки.
+    </p>
+</section>
+
+{% if error %}
+    <div class="alert alert-error">
+        <strong>Не удалось сохранить заказ.</strong>
+        <p>{{ error }}</p>
+    </div>
+{% endif %}
+
+<form method="post" action="/orders/new" class="order-form">
+    <div class="form-row">
+        <label for="origin">Откуда</label>
+        <input
+            type="text"
+            id="origin"
+            name="origin"
+            value="{{ form.origin or '' }}"
+            placeholder="Например, Ульяновск"
+            required
+        >
+    </div>
+
+    <div class="form-row">
+        <label for="destination">Куда</label>
+        <input
+            type="text"
+            id="destination"
+            name="destination"
+            value="{{ form.destination or '' }}"
+            placeholder="Например, Москва"
+            required
+        >
+    </div>
+
+    <div class="form-row">
+        <label for="cargo">Груз</label>
+        <input
+            type="text"
+            id="cargo"
+            name="cargo"
+            value="{{ form.cargo or '' }}"
+            placeholder="Например, мебель"
+            required
+        >
+    </div>
+
+    <div class="form-row">
+        <label for="price">Цена, ₽</label>
+        <input
+            type="text"
+            id="price"
+            name="price"
+            value="{{ form.price or '' }}"
+            placeholder="Например, 45000"
+            inputmode="numeric"
+            required
+        >
+    </div>
+
+    <div class="form-row">
+        <label for="source">Площадка</label>
+        <select name="source" id="source">
+            {% for s in allowed_sources %}
+                <option
+                    value="{{ s }}"
+                    {% if form.source == s %}selected{% endif %}
+                >
+                    {{ s }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit">Сохранить</button>
+        <a class="cancel-link" href="/orders">Отмена</a>
+    </div>
+</form>
+
+<p class="back-link">
+    <a href="/">← На главную</a>
+</p>
+{% endblock %}
