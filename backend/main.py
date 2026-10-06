@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from backend import storage
+import storage
 
 app = FastAPI(title="OrderParser", version="0.0.1")
 
