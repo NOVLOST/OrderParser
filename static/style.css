@@ -1,65 +1,588 @@
-/* Сброс отступов и единый box-sizing */
+/* ---------- сброс и базовая типографика ---------- */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Базовые настройки страницы */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
-    color: #1f2933;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    line-height: 1.6;
+:root {
+    --color-bg: #f4f6f9;
+    --color-surface: #ffffff;
+    --color-border: #e2e8f0;
+    --color-text: #1f2933;
+    --color-muted: #64748b;
+    --color-primary: #2563eb;
+    --color-primary-dark: #1e40af;
+    --color-success-bg: #e6fffa;
+    --color-success-text: #2f855a;
+    --color-error-bg: #fef2f2;
+    --color-error-border: #fecaca;
+    --color-error-text: #b91c1c;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
-/* Карточка по центру экрана */
-main {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 48px 56px;
-    max-width: 640px;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- общий контейнер ---------- */
+
+.container {
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- шапка ---------- */
+
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    letter-spacing: -0.3px;
+}
+
+.brand:hover {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    font-size: 15px;
+    color: var(--color-muted);
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom-color: var(--color-primary);
+}
+
+/* ---------- основная область ---------- */
+
+main.container {
+    flex: 1;
+    padding-top: 32px;
+    padding-bottom: 48px;
+}
+
+/* ---------- подвал ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-muted);
+    font-size: 14px;
+    padding: 16px 0;
     text-align: center;
 }
 
-/* Заголовок — название продукта */
-main h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1a365d;
-    margin-bottom: 16px;
+/* ---------- главная: hero ---------- */
+
+.hero {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    color: var(--color-primary-dark);
+    margin-bottom: 12px;
     letter-spacing: -0.5px;
 }
 
-/* Описание продукта */
-main p:first-of-type {
+.lead {
     font-size: 17px;
-    color: #52606d;
-    margin-bottom: 24px;
+    color: var(--color-muted);
+    margin-bottom: 20px;
 }
 
-/* Версия */
-main p:nth-of-type(2) {
+.version {
     font-size: 14px;
-    color: #7b8794;
-    margin-bottom: 8px;
+    color: var(--color-muted);
+    margin-bottom: 6px;
 }
 
-/* Строка "Разработка продолжается" */
-main p:nth-of-type(3) {
+.status {
     display: inline-block;
     font-size: 14px;
     font-weight: 600;
-    color: #2f855a;
-    background: #e6fffa;
+    color: var(--color-success-text);
+    background: var(--color-success-bg);
     padding: 6px 14px;
     border-radius: 999px;
-    margin-top: 8px;
+}
+
+/* ---------- главная: карточки действий ---------- */
+
+.actions h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--color-text);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    color: inherit;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    border-color: var(--color-primary);
+    text-decoration: none;
+}
+
+.card h3 {
+    font-size: 17px;
+    color: var(--color-primary-dark);
+    margin-bottom: 6px;
+}
+
+.card p {
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+/* ---------- заголовки страниц ---------- */
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 26px;
+    color: var(--color-primary-dark);
+    margin-bottom: 6px;
+}
+
+.page-header .lead {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+/* ---------- фильтры ---------- */
+
+.filters {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-form label {
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+.filter-form select {
+    padding: 6px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.filter-form button {
+    padding: 6px 16px;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.filter-form button:hover {
+    background: var(--color-primary-dark);
+}
+
+.reset-link {
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+/* ---------- таблица заказов ---------- */
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.orders-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+}
+
+.orders-table tr:last-child td {
+    border-bottom: none;
+}
+
+.orders-table tr:hover td {
+    background: #f9fafb;
+}
+
+/* ---------- пустое состояние ---------- */
+
+.empty-state {
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius);
+    padding: 32px 20px;
+    text-align: center;
+    color: var(--color-muted);
+}
+
+.empty-state p {
+    margin-bottom: 8px;
+}
+
+/* ---------- ссылка «назад» ---------- */
+
+.back-link {
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+/* ---------- формы ---------- */
+
+.order-form {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    max-width: 640px;
+}
+
+.form-row {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form-row input,
+.form-row select {
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fff;
+    color: var(--color-text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.form-actions button {
+    padding: 10px 22px;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.form-actions button:hover {
+    background: var(--color-primary-dark);
+}
+
+.cancel-link {
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+/* ---------- уведомление об ошибке в форме ---------- */
+
+.alert {
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    color: var(--color-error-text);
+}
+
+.alert-error strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ---------- карточка заказа ---------- */
+
+.order-detail {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 8px 0;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+}
+
+.detail-row {
+    display: flex;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row dt {
+    width: 160px;
+    flex-shrink: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.detail-row dd {
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ---------- универсальная кнопка-ссылка ---------- */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.15s;
+}
+
+.button:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none;
+    color: #fff;
+}
+
+/* ---------- страница ошибки ---------- */
+
+.error-page {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.error-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-error-text);
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.error-page h1 {
+    font-size: 26px;
+    color: var(--color-error-text);
+    margin-bottom: 12px;
+}
+
+.error-page .lead {
+    font-size: 16px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+}
+
+.error-hint {
+    text-align: left;
+    background: #f8fafc;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 24px;
+}
+
+.error-hint p {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.error-hint ul {
+    padding-left: 20px;
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.error-hint li {
+    margin-bottom: 4px;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ---------- адаптив ---------- */
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 28px 20px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .header-inner {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .main-nav {
+        justify-content: center;
+    }
+
+    .orders-table {
+        font-size: 13px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 8px 10px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .detail-row dt {
+        width: auto;
+    }
 }

@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block title %}OrderParser — {{ title }}{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="error-badge">Ошибка</div>
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ message }}</p>
+
+    <div class="error-hint">
+        <p>Что можно сделать:</p>
+        <ul>
+            <li>вернуться на главную и выбрать другое действие;</li>
+            <li>открыть список заказов и проверить, есть ли нужная запись;</li>
+            <li>добавить заказ вручную, если он ещё не подтянулся с площадки.</li>
+        </ul>
+    </div>
+
+    <div class="error-actions">
+        <a class="button" href="/">На главную</a>
+        <a class="button" href="/orders">К списку заказов</a>
+        <a class="button" href="/orders/new">Добавить заказ</a>
+    </div>
+</section>
+{% endblock %}
