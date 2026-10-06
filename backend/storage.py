@@ -17,9 +17,12 @@ from threading import Lock
 from typing import Iterable, Optional
 
 
-# Путь к файлу данных. Можно переопределить переменной окружения,
-# чтобы удобно подменять его в тестах или в контейнере.
-DATA_FILE = Path(os.getenv("ORDERS_DATA_FILE", "data/orders.json"))
+# storage.py лежит в backend/, data/ — на уровень выше, в корне проекта.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DATA_FILE = Path(
+    os.getenv("ORDERS_DATA_FILE", BASE_DIR / "data" / "orders.json")
+)
 
 # Блокировка на время записи. FastAPI может обрабатывать запросы
 # в нескольких потоках — так мы не допустим одновременной записи.
