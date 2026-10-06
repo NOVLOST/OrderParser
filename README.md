@@ -35,4 +35,36 @@ OrderParser — веб-приложение, которое собирает з�
 ---
 
 ## Структура проекта
+project/ ├── backend/ │ ├── main.py │ └── requirements.txt ├── templates/ │ └── index.html ├── static/ │ └── style.css ├── Dockerfile └── README.md
 
+
+---
+
+## Запуск
+
+Образ опубликован в открытом реестре. Сборка на вашем компьютере не требуется.
+
+### Docker Hub
+
+```bash
+docker pull ixtis/OrderParser:0.0.1
+docker run --rm -p 8080:8080 ixtis/OrderParser:0.0.1
+```
+После запуска откройте в браузере:
+
+http://localhost:8080
+
+На странице отображаются название продукта, описание, версия и статус разработки.
+Сборка образа (для разработчика)
+
+Если нужно собрать образ самостоятельно:
+
+docker build -t ixtis/OrderParser:0.0.1 .
+
+Ссылки
+
+    Образ в Docker Hub: https://hub.docker.com/r/ixtis/OrderParser
+
+Лицензия
+
+Учебный проект. Свободное использование в образовательных целях.
