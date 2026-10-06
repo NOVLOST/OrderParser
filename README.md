@@ -58,9 +58,9 @@ http://localhost:8080
 Сборка образа (для разработчика)
 
 Если нужно собрать образ самостоятельно:
-
+```
 docker build -t ixtis/OrderParser:0.0.1 .
-
+```
 Ссылки
 
     Образ в Docker Hub: https://hub.docker.com/r/ixtis/OrderParser
