@@ -33,11 +33,11 @@ OrderParser — веб-приложение, которое собирает з�
 Планируется добавить: **Scrapling** для парсинга заказов.
 
 ---
-
+```
 ## Структура проекта
 project/ ├── backend/ │ ├── main.py │ └── requirements.txt ├── templates/ │ └── index.html ├── static/ │ └── style.css ├── Dockerfile └── README.md
 
-
+```
 ---
 
 ## Запуск
