@@ -39,6 +39,7 @@ OrderParser — веб-приложение, которое собирает з�
 ## Структура проекта
 
 ```
+```
 project/
 ├── backend/
 │   ├── main.py              маршруты FastAPI
@@ -51,7 +52,7 @@ project/
 ├── docker-compose.yml
 └── README.md
 ```
-
+```
 ---
 
 ## Запуск
