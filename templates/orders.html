@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+{% block title %}OrderParser — список заказов{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Список заказов</h1>
+    <p class="lead">
+        Все заказы, собранные с подключённых площадок и добавленные вручную.
+    </p>
+</section>
+
+<section class="filters">
+    <form method="get" action="/orders" class="filter-form">
+        <label for="source">Площадка:</label>
+        <select name="source" id="source">
+            <option value="" {% if not source %}selected{% endif %}>
+                Все площадки
+            </option>
+            {% for s in allowed_sources %}
+                <option value="{{ s }}" {% if source == s %}selected{% endif %}>
+                    {{ s }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Показать</button>
+        {% if source %}
+            <a class="reset-link" href="/orders">Сбросить</a>
+        {% endif %}
+    </form>
+</section>
+
+{% if orders %}
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Груз</th>
+                <th>Цена, ₽</th>
+                <th>Площадка</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.origin }}</td>
+                    <td>{{ order.destination }}</td>
+                    <td>{{ order.cargo }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>{{ order.source }}</td>
+                    <td>{{ order.status }}</td>
+                    <td><a href="/orders/{{ order.id }}">Открыть</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty-state">
+        {% if source %}
+            <p>С площадки <strong>{{ source }}</strong> пока нет заказов.</p>
+            <p><a href="/orders">Показать все заказы</a></p>
+        {% else %}
+            <p>Заказов пока нет.</p>
+            <p><a href="/orders/new">Добавить первый заказ</a></p>
+        {% endif %}
+    </div>
+{% endif %}
+
+<p class="back-link">
+    <a href="/">← На главную</a>
+</p>
+{% endblock %}

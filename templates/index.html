@@ -1,17 +1,33 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>OrderParser</title>
-    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <main>
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
-        <p>Версия {{ version }}</p>
-        <p>Разработка продолжается</p>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}OrderParser — главная{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>OrderParser</h1>
+    <p class="lead">
+        Платформа для сбора заказов на грузоперевозки с различных розничных площадок.
+        Все доступные заказы — в одном окне, без ручного обхода сайтов.
+    </p>
+    <p class="version">Версия {{ version }}</p>
+    <p class="status">Разработка продолжается</p>
+</section>
+
+<section class="actions">
+    <h2>Что можно сделать</h2>
+    <div class="cards">
+        <a class="card" href="/orders">
+            <h3>Список заказов</h3>
+            <p>Посмотреть все собранные заказы на грузоперевозки.</p>
+        </a>
+        <a class="card" href="/orders/new">
+            <h3>Добавить заказ</h3>
+            <p>Внести заказ вручную, если он ещё не подтянулся с площадки.</p>
+        </a>
+        <a class="card" href="/sources/ozon/check">
+            <h3>Проверить площадку</h3>
+            <p>Узнать, подключена ли площадка к системе (пример отказа).</p>
+        </a>
+    </div>
+</section>
+{% endblock %}

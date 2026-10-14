@@ -9,6 +9,8 @@ COPY backend/ .
 COPY templates/ ./templates/
 COPY static/ ./static/
 
+ENV ORDERS_DATA_FILE=/app/data/orders.json
+
 EXPOSE 8080
 
 CMD ["uvicorn","main:app", "--host","0.0.0.0","--port","8080"]
