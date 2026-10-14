@@ -36,7 +36,7 @@ OrderParser — веб-приложение, которое собирает з�
 ---
 
 ## Структура проекта
-
+```
 ```
 project/
 ├── backend/
@@ -57,6 +57,7 @@ project/
 │   └── orders.json          демо-данные
 ├── Dockerfile
 └── README.md
+```
 ```
 
 ---
