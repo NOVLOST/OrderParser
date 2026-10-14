@@ -35,7 +35,10 @@ OrderParser — веб-приложение, которое собирает з�
 ---
 ```
 ## Структура проекта
-project/ ├── backend/ │ ├── main.py │ └── requirements.txt ├── templates/ │ └── index.html ├── static/ │ └── style.css ├── Dockerfile └── README.md
+project/ ├── backend/ │ ├── main.py │ └── requirements.txt
+├── templates/ │ └── index.html
+├── static/ │ └── style.css
+├── Dockerfile └── README.md
 
 ```
 ---
