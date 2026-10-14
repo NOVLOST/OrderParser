@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}OrderParser — список заказов{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Список заказов</h1>
+    <p class="lead">
+        Все заказы, собранные с подключённых площадок и добавленные вручную.
+    </p>
+</section>
+
+<section class="filters">
+    <form method="get" action="/orders" class="filter-form">
+        <label for="source">Площадка:</label>
+        <select name="source" id="source">
+            <option value="" {% if not selected_source %}selected{% endif %}>
+                Все площадки
+            </option>
+            {% for src in sources %}
+                <option
+                    value="{{ src.id }}"
+                    {% if selected_source == src.id %}selected{% endif %}
+                >
+                    {{ src.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Показать</button>
+        {% if selected_source %}
+            <a class="reset-link" href="/orders">Сбросить</a>
+        {% endif %}
+    </form>
+</section>
+
+{% if orders %}
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Груз</th>
+                <th>Цена, ₽</th>
+                <th>Площадка</th>
+                <th>Дата</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.where_from }}</td>
+                    <td>{{ order.where_to }}</td>
+                    <td>{{ order.cargo }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>{{ order.source_name }}</td>
+                    <td>{{ order.date.strftime("%d.%m.%Y %H:%M") }}</td>
+                    <td><a href="/orders/{{ order.id }}">Открыть</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty-state">
+        {% if selected_source %}
+            <p>С выбранной площадки пока нет заказов.</p>
+            <p><a href="/orders">Показать все заказы</a></p>
+        {% else %}
+            <p>Заказов пока нет.</p>
+            <p><a href="/orders/new">Добавить первый заказ</a></p>
+        {% endif %}
+    </div>
+{% endif %}
+
+<p class="back-link">
+    <a href="/">← На главную</a>
+</p>
+{% endblock %}

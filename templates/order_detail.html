@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}OrderParser — заказ №{{ order.id }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Заказ №{{ order.id }}</h1>
+    <p class="lead">
+        Карточка заказа на грузоперевозку.
+    </p>
+</section>
+
+<dl class="order-detail">
+    <div class="detail-row">
+        <dt>Откуда</dt>
+        <dd>{{ order.where_from }}</dd>
+    </div>
+
+    <div class="detail-row">
+        <dt>Куда</dt>
+        <dd>{{ order.where_to }}</dd>
+    </div>
+
+    <div class="detail-row">
+        <dt>Груз</dt>
+        <dd>{{ order.cargo }}</dd>
+    </div>
+
+    <div class="detail-row">
+        <dt>Цена</dt>
+        <dd>{{ order.price }} ₽</dd>
+    </div>
+
+    <div class="detail-row">
+        <dt>Площадка</dt>
+        <dd>{{ order.source_name }}</dd>
+    </div>
+
+    <div class="detail-row">
+        <dt>Дата создания</dt>
+        <dd>{{ order.date.strftime("%d.%m.%Y %H:%M") }}</dd>
+    </div>
+</dl>
+
+<div class="detail-actions">
+    <a class="button" href="/orders">← К списку заказов</a>
+    <a class="button" href="/orders/new">Добавить ещё заказ</a>
+</div>
+
+<p class="back-link">
+    <a href="/">← На главную</a>
+</p>
+{% endblock %}
