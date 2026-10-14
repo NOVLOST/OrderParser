@@ -56,14 +56,14 @@ project/
 
 ## Запуск
 
-Репозиторий: https://github.com/ixtis/orderparser  
+Репозиторий: https://github.com/NOVLOST/OrderParser/
 Ветка: lab3  
-Pull Request: https://github.com/ixtis/orderparser/pull/3  
+Pull Request: https://github.com/NOVLOST/orderparser/pull/3  
 Образ: ixtis/orderparser:0.0.3  
-Страница образа: https://hub.docker.com/r/ixtis/orderparser
+Страница образа: https://hub.docker.com/r/NOVLOST/orderparser
 
 ```bash
-git clone -b lab3 https://github.com/ixtis/orderparser
+git clone -b lab3 https://github.com/NOVLOST/orderparser
 cd orderparser
 docker compose up -d
 ```
@@ -104,9 +104,9 @@ docker buildx build --platform linux/amd64,linux/arm64 \
 
 ## Ссылки
 
-- Репозиторий: https://github.com/ixtis/orderparser
-- Pull Request лабы №3: https://github.com/ixtis/orderparser/pull/3
-- Образ в Docker Hub: https://hub.docker.com/r/ixtis/orderparser
+- Репозиторий: https://github.com/NOVLOST/orderparser
+- Pull Request лабы №3: https://github.com/NOVLOST/orderparser/pull/3
+- Образ в Docker Hub: https://hub.docker.com/r/NOVLOST/orderparser
 
 ---
 
