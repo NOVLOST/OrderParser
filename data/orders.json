@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "origin": "Ульяновск",
+    "destination": "Москва",
+    "cargo": "Мебель",
+    "price": 45000,
+    "source": "manual",
+    "status": "new"
+  },
+  {
+    "id": 2,
+    "origin": "Казань",
+    "destination": "Самара",
+    "cargo": "Продукты",
+    "price": 18000,
+    "source": "manual",
+    "status": "new"
+  }
+]
