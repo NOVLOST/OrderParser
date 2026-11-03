@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}OrderParser — добавить заказ{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="h3 mb-1">Добавить заказ</h1>
+    <p class="text-secondary mb-0">Внесите заказ вручную, если он ещё не подтянулся с площадки.</p>
+</div>
+
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Не удалось сохранить заказ.</strong>
+        <div>{{ error }}</div>
+    </div>
+{% endif %}
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <form method="post" action="/orders/new" class="vstack gap-3">
+            <div>
+                <label for="where_from" class="form-label">Откуда</label>
+                <input type="text" class="form-control" id="where_from" name="where_from"
+                       value="{{ form.where_from or '' }}" placeholder="Например, Ульяновск" required>
+            </div>
+            <div>
+                <label for="where_to" class="form-label">Куда</label>
+                <input type="text" class="form-control" id="where_to" name="where_to"
+                       value="{{ form.where_to or '' }}" placeholder="Например, Москва" required>
+            </div>
+            <div>
+                <label for="cargo" class="form-label">Груз</label>
+                <input type="text" class="form-control" id="cargo" name="cargo"
+                       value="{{ form.cargo or '' }}" placeholder="Например, мебель" required>
+            </div>
+            <div>
+                <label for="price" class="form-label">Цена, ₽</label>
+                <input type="text" class="form-control" id="price" name="price"
+                       value="{{ form.price or '' }}" placeholder="Например, 45000"
+                       inputmode="numeric" required>
+            </div>
+            <div>
+                <label for="source_place" class="form-label">Площадка</label>
+                <select class="form-select" name="source_place" id="source_place" required>
+                    {% for src in sources %}
+                        <option value="{{ src.id }}"
+                            {% if form.source_place == src.id|string %}selected{% endif %}>
+                            {{ src.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="d-flex gap-2 pt-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check2 me-1"></i>Сохранить
+                </button>
+                <a class="btn btn-outline-secondary" href="/orders">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="/" class="btn btn-link px-0">
+        <i class="bi bi-arrow-left me-1"></i>На главную
+    </a>
+</div>
+{% endblock %}
