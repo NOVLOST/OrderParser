@@ -2,7 +2,7 @@
 
 **Платформа для сбора заказов на грузоперевозки с различных розничных площадок**
 
-Версия: 0.0.1  
+Версия: 0.0.5  
 Статус: разработка продолжается
 
 ---
@@ -33,14 +33,11 @@ OrderParser — веб-приложение, которое собирает з�
 Планируется добавить: **Scrapling** для парсинга заказов.
 
 ---
-```
-## Структура проекта
-project/ ├── backend/ │ ├── main.py │ └── requirements.txt
-├── templates/ │ └── index.html
-├── static/ │ └── style.css
-├── Dockerfile └── README.md
 
-```
+## Структура проекта
+project/ ├── backend/ │ ├── main.py │ └── requirements.txt ├── templates/ │ └── index.html ├── static/ │ └── style.css ├── Dockerfile └── README.md
+
+
 ---
 
 ## Запуск

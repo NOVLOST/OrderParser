@@ -1,17 +1,56 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>OrderParser</title>
-    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <main>
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
-        <p>Версия {{ version }}</p>
-        <p>Разработка продолжается</p>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}OrderParser — главная{% endblock %}
+
+{% block content %}
+<section class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <h1 class="display-6 fw-bold">OrderParser</h1>
+    <p class="col-md-10 fs-5 text-secondary">
+        Платформа для сбора заказов на грузоперевозки с различных розничных площадок.
+        Все доступные заказы — в одном окне, без ручного обхода сайтов.
+    </p>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+        <span class="badge text-bg-primary fs-6">Версия {{ version }}</span>
+        <span class="badge text-bg-secondary">Разработка продолжается</span>
+    </div>
+</section>
+
+<section>
+    <h2 class="h4 mb-3">Что можно сделать</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <a href="/orders" class="card h-100 text-decoration-none shadow-sm card-hover">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-list-ul fs-3 text-primary me-2"></i>
+                        <h3 class="h5 mb-0">Список заказов</h3>
+                    </div>
+                    <p class="text-secondary mb-0">Посмотреть все собранные заказы на грузоперевозки.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/orders/new" class="card h-100 text-decoration-none shadow-sm card-hover">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-plus-square fs-3 text-success me-2"></i>
+                        <h3 class="h5 mb-0">Добавить заказ</h3>
+                    </div>
+                    <p class="text-secondary mb-0">Внести заказ вручную, если он ещё не подтянулся с площадки.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/sources/1/check" class="card h-100 text-decoration-none shadow-sm card-hover">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-shield-check fs-3 text-warning me-2"></i>
+                        <h3 class="h5 mb-0">Проверить площадку</h3>
+                    </div>
+                    <p class="text-secondary mb-0">Узнать, подключена ли площадка (пример отказа на id, которого нет).</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

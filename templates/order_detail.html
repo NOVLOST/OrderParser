@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}OrderParser — заказ №{{ order.id }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h1 class="h3 mb-1">Заказ №{{ order.id }}</h1>
+        <p class="text-secondary mb-0">Карточка заказа на грузоперевозку.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="/orders" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-1"></i>К списку
+        </a>
+        <a href="/orders/new" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i>Добавить ещё
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <dl class="row mb-0 g-0">
+            <dt class="col-sm-4 text-secondary">Откуда</dt>
+            <dd class="col-sm-8">{{ order.where_from }}</dd>
+
+            <dt class="col-sm-4 text-secondary">Куда</dt>
+            <dd class="col-sm-8">{{ order.where_to }}</dd>
+
+            <dt class="col-sm-4 text-secondary">Груз</dt>
+            <dd class="col-sm-8">{{ order.cargo }}</dd>
+
+            <dt class="col-sm-4 text-secondary">Цена</dt>
+            <dd class="col-sm-8">{{ order.price }} ₽</dd>
+
+            <dt class="col-sm-4 text-secondary">Площадка</dt>
+            <dd class="col-sm-8">{{ order.source_name }}</dd>
+
+            <dt class="col-sm-4 text-secondary mb-0">Дата создания</dt>
+            <dd class="col-sm-8 mb-0">{{ order.date.strftime("%d.%m.%Y %H:%M") }}</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="/" class="btn btn-link px-0">
+        <i class="bi bi-arrow-left me-1"></i>На главную
+    </a>
+</div>
+{% endblock %}
